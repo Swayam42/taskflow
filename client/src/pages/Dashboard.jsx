@@ -159,26 +159,21 @@ export default function Dashboard() {
 
   return (
     <div className="mx-auto max-w-7xl space-y-8 animate-fade-in">
-      <section className="overflow-hidden rounded-xl border border-neutral-200 bg-neutral-950 p-6 text-white shadow-soft sm:p-8">
+      <section className="overflow-hidden rounded-2xl border border-neutral-200/80 bg-white/90 p-6 sm:p-8">
         <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
           <div className="max-w-2xl">
-            <p className="text-sm font-medium text-neutral-400">
+            <p className="text-sm font-medium text-neutral-500">
               Delivery overview
             </p>
-            <h2 className="mt-3 text-3xl font-semibold sm:text-4xl">
+            <h2 className="mt-3 text-3xl font-semibold text-neutral-950 sm:text-4xl">
               Run every project from one quiet, focused workspace.
             </h2>
-            <p className="mt-4 text-sm leading-6 text-neutral-300">
+            <p className="mt-4 text-sm leading-6 text-neutral-600">
               Track project health, task progress, and active work without the
               noise of a crowded tool.
             </p>
           </div>
-          <Button
-            className="border-white bg-white text-neutral-950 hover:bg-neutral-200 hover:border-neutral-200"
-            icon={Plus}
-            onClick={openCreateProject}
-            size="lg"
-          >
+          <Button icon={Plus} onClick={openCreateProject} size="lg">
             New project
           </Button>
         </div>
@@ -246,7 +241,7 @@ export default function Dashboard() {
               Recent tasks
             </h2>
           </div>
-          <div className="rounded-xl border border-neutral-200 bg-white shadow-line">
+          <div className="rounded-2xl border border-neutral-200/80 bg-white">
             {isLoading ? (
               <div className="space-y-3 p-4">
                 {Array.from({ length: 5 }).map((_, index) => (

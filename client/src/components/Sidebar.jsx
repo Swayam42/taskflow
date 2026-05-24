@@ -22,9 +22,9 @@ const NavItem = ({ item, onClick }) => {
     <NavLink
       className={({ isActive }) =>
         cn(
-          "flex h-11 items-center gap-3 rounded-xl px-3 text-sm font-medium transition",
+          "flex h-11 items-center gap-3 rounded-lg px-3 text-sm font-medium transition",
           isActive
-            ? "bg-white text-neutral-950 shadow-line"
+            ? "bg-neutral-100 text-neutral-950"
             : "text-neutral-500 hover:bg-neutral-100 hover:text-neutral-950"
         )
       }
@@ -41,15 +41,15 @@ export default function Sidebar({ isMobileOpen, onClose }) {
   const { logout } = useAuth();
 
   const content = (
-    <div className="flex h-full flex-col bg-neutral-950 text-white">
-      <div className="flex h-20 items-center justify-between border-b border-white/10 px-6">
+    <div className="flex h-full flex-col border-r border-neutral-200/80 bg-white text-neutral-900">
+      <div className="flex h-16 items-center justify-between border-b border-neutral-200/80 px-6">
         <div className="min-w-0">
           <p className="text-xl font-semibold">TaskFlow</p>
-          <p className="mt-1 text-xs text-neutral-400">Project command center</p>
+          <p className="mt-1 text-xs text-neutral-500">Project command center</p>
         </div>
         <Button
           aria-label="Close sidebar"
-          className="text-white hover:bg-white/10 hover:text-white lg:hidden"
+          className="text-neutral-600 hover:bg-neutral-100 hover:text-neutral-900 lg:hidden"
           icon={X}
           onClick={onClose}
           size="icon"
@@ -64,21 +64,21 @@ export default function Sidebar({ isMobileOpen, onClose }) {
       </nav>
 
       <div className="px-4 pb-4">
-        <div className="rounded-xl border border-white/10 bg-white/[0.03] p-4">
+        <div className="rounded-lg border border-neutral-200 bg-white p-4">
           <div className="flex items-center gap-3">
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-white text-neutral-950">
+            <div className="flex h-10 w-10 items-center justify-center rounded-lg border border-neutral-200 bg-white text-neutral-950">
               <BarChart3 className="h-5 w-5" aria-hidden="true" />
             </div>
             <div className="min-w-0">
-              <p className="text-sm font-medium text-white">Focus mode</p>
-              <p className="mt-1 truncate text-xs text-neutral-400">
+              <p className="text-sm font-medium text-neutral-900">Focus mode</p>
+              <p className="mt-1 truncate text-xs text-neutral-500">
                 Ship the next meaningful thing.
               </p>
             </div>
           </div>
         </div>
         <Button
-          className="mt-4 w-full border-white/10 bg-transparent text-white hover:bg-white/10"
+          className="mt-4 w-full"
           icon={LogOut}
           onClick={logout}
           variant="ghost"
@@ -98,7 +98,7 @@ export default function Sidebar({ isMobileOpen, onClose }) {
         <div className="fixed inset-0 z-50 lg:hidden">
           <button
             aria-label="Close sidebar overlay"
-            className="absolute inset-0 cursor-default bg-black/50"
+            className="absolute inset-0 cursor-default bg-black/40"
             onClick={onClose}
           />
           <aside className="relative h-full w-[min(18rem,86vw)] shadow-soft animate-fade-in">

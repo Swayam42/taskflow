@@ -4,8 +4,8 @@ export default {
   theme: {
     extend: {
       boxShadow: {
-        soft: "0 20px 50px rgba(0, 0, 0, 0.08)",
-        line: "0 1px 0 rgba(0, 0, 0, 0.06)"
+        soft: "0 12px 28px rgba(0, 0, 0, 0.08)",
+        line: "0 1px 0 rgba(0, 0, 0, 0.04)"
       },
       keyframes: {
         fadeIn: {

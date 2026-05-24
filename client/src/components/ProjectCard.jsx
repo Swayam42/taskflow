@@ -7,10 +7,12 @@ import { formatDate } from "../utils/formatters.js";
 export default function ProjectCard({ onDelete, onEdit, project }) {
   const totalTasks = project.metrics?.totalTasks || 0;
   const completedTasks = project.metrics?.completedTasks || 0;
-  const completion = totalTasks ? Math.round((completedTasks / totalTasks) * 100) : 0;
+  const completion = totalTasks
+    ? Math.round((completedTasks / totalTasks) * 100)
+    : 0;
 
   return (
-    <Card className="group flex h-full flex-col p-5 transition duration-200 hover:-translate-y-1 hover:shadow-soft">
+    <Card className="group flex h-full flex-col p-5 transition duration-150 hover:border-neutral-300 hover:bg-neutral-50">
       <div className="flex items-start justify-between gap-4">
         <div className="min-w-0">
           <p className="text-xs font-medium uppercase text-neutral-500">
@@ -42,7 +44,7 @@ export default function ProjectCard({ onDelete, onEdit, project }) {
         {project.description || "No description yet."}
       </p>
 
-      <div className="mt-5 rounded-xl border border-neutral-200 bg-neutral-50 p-4">
+      <div className="mt-5 rounded-lg border border-neutral-200 bg-white p-4">
         <div className="flex items-center justify-between text-sm">
           <span className="font-medium text-neutral-600">Completion</span>
           <span className="font-semibold text-neutral-950">{completion}%</span>
@@ -64,7 +66,7 @@ export default function ProjectCard({ onDelete, onEdit, project }) {
           Updated {formatDate(project.updatedAt)}
         </span>
         <Link
-          className="inline-flex items-center gap-2 rounded-xl px-2 py-1 text-sm font-medium text-neutral-950 transition hover:bg-neutral-100"
+          className="inline-flex items-center gap-2 rounded-lg px-2 py-1 text-sm font-medium text-neutral-950 transition hover:bg-neutral-100"
           to={`/projects/${project._id}`}
         >
           Open

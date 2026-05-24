@@ -43,6 +43,7 @@ export default function ProjectDetail() {
   const [isLoading, setIsLoading] = useState(true);
   const [isSaving, setIsSaving] = useState(false);
   const [draggedTask, setDraggedTask] = useState(null);
+  const [activeColumn, setActiveColumn] = useState(null);
   const [taskToEdit, setTaskToEdit] = useState(null);
   const [taskToDelete, setTaskToDelete] = useState(null);
   const taskModal = useDisclosure();
@@ -181,13 +182,20 @@ export default function ProjectDetail() {
 
   const handleDragStart = (event, task) => {
     setDraggedTask(task);
+    setActiveColumn(task.status);
     event.dataTransfer.effectAllowed = "move";
     event.dataTransfer.setData("text/plain", task._id);
+  };
+
+  const handleDragEnd = () => {
+    setDraggedTask(null);
+    setActiveColumn(null);
   };
 
   const handleDrop = async (status) => {
     if (!draggedTask || draggedTask.status === status) {
       setDraggedTask(null);
+      setActiveColumn(null);
       return;
     }
 
@@ -198,6 +206,7 @@ export default function ProjectDetail() {
 
     setTasks(updatedTasks);
     setDraggedTask(null);
+    setActiveColumn(null);
 
     try {
       const updatedTask = await updateTaskStatusRequest(draggedTask._id, status);
@@ -232,11 +241,11 @@ export default function ProjectDetail() {
 
   return (
     <div className="mx-auto max-w-7xl space-y-8 animate-fade-in">
-      <section className="rounded-xl border border-neutral-200 bg-white p-6 shadow-line sm:p-8">
+      <section className="rounded-2xl border border-neutral-200/80 bg-white/90 p-6 sm:p-8">
         <div className="flex flex-col gap-5 lg:flex-row lg:items-start lg:justify-between">
           <div className="min-w-0">
             <Link
-              className="inline-flex items-center gap-2 rounded-xl px-2 py-1 text-sm font-medium text-neutral-600 transition hover:bg-neutral-100 hover:text-neutral-950"
+              className="inline-flex items-center gap-2 rounded-lg px-2 py-1 text-sm font-medium text-neutral-600 transition hover:bg-neutral-100 hover:text-neutral-950"
               to="/dashboard"
             >
               <ArrowLeft className="h-4 w-4" aria-hidden="true" />
@@ -297,12 +306,31 @@ export default function ProjectDetail() {
           <div className="kanban-scroll grid gap-4 overflow-x-auto pb-2 xl:grid-cols-3">
             {TASK_STATUSES.map((status) => (
               <div
-                className="min-h-[28rem] min-w-[18rem] rounded-xl border border-neutral-200 bg-neutral-100/70 p-3"
+                className={`min-h-[26rem] min-w-[18rem] rounded-2xl border p-3 transition ${
+                  activeColumn === status
+                    ? "border-neutral-400 bg-white"
+                    : "border-neutral-200/80 bg-white/70"
+                }`}
                 key={status}
-                onDragOver={(event) => event.preventDefault()}
+                onDragOver={(event) => {
+                  event.preventDefault();
+                  event.dataTransfer.dropEffect = "move";
+                }}
+                onDragEnter={() => {
+                  if (draggedTask && draggedTask.status !== status) {
+                    setActiveColumn(status);
+                  }
+                }}
+                onDragLeave={(event) => {
+                  if (event.currentTarget === event.target) {
+                    setActiveColumn((current) =>
+                      current === status ? null : current
+                    );
+                  }
+                }}
                 onDrop={() => handleDrop(status)}
               >
-                <div className="mb-3 flex items-center justify-between gap-3 rounded-xl border border-neutral-200 bg-white px-4 py-3 shadow-line">
+                <div className="mb-3 flex items-center justify-between gap-3 rounded-xl border border-neutral-200/80 bg-white px-4 py-3">
                   <div className="min-w-0">
                     <h3 className="font-semibold text-neutral-950">{status}</h3>
                     <p className="mt-1 text-xs text-neutral-500">
@@ -319,6 +347,7 @@ export default function ProjectDetail() {
                       <TaskCard
                         key={task._id}
                         onDelete={openDeleteTask}
+                        onDragEnd={handleDragEnd}
                         onDragStart={handleDragStart}
                         onEdit={openEditTask}
                         task={task}

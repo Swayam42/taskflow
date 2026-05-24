@@ -3,13 +3,20 @@ import Button from "./Button.jsx";
 import Card from "./Card.jsx";
 import { formatDate } from "../utils/formatters.js";
 
-export default function TaskCard({ onDelete, onDragStart, onEdit, task }) {
+export default function TaskCard({
+  onDelete,
+  onDragStart,
+  onDragEnd,
+  onEdit,
+  task
+}) {
   return (
     <Card
       as="article"
-      className="cursor-grab p-4 transition duration-200 hover:-translate-y-0.5 hover:shadow-soft active:cursor-grabbing"
+      className="cursor-grab p-4 transition duration-150 hover:border-neutral-300 hover:bg-neutral-50 active:cursor-grabbing"
       draggable
-      onDragStart={(event) => onDragStart(event, task)}
+      onDragStart={(event) => onDragStart?.(event, task)}
+      onDragEnd={(event) => onDragEnd?.(event, task)}
     >
       <div className="flex items-start justify-between gap-3">
         <div className="flex min-w-0 gap-2">
@@ -45,7 +52,7 @@ export default function TaskCard({ onDelete, onDragStart, onEdit, task }) {
       </div>
 
       <div className="mt-4 flex flex-wrap items-center justify-between gap-2">
-        <span className="rounded-full border border-neutral-200 bg-neutral-50 px-3 py-1 text-xs font-medium text-neutral-700">
+        <span className="rounded-full border border-neutral-200 bg-white px-3 py-1 text-xs font-medium text-neutral-700">
           {task.priority}
         </span>
         <span className="text-xs text-neutral-500">

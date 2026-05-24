@@ -21,7 +21,7 @@ export default function Input({
       <Component
         id={inputId}
         className={cn(
-          "w-full rounded-xl border bg-white px-4 py-3 text-sm text-neutral-950 outline-none transition placeholder:text-neutral-400 focus:border-neutral-950 focus:ring-2 focus:ring-neutral-950/10",
+          "w-full rounded-lg border bg-white px-4 py-3 text-sm text-neutral-900 outline-none transition placeholder:text-neutral-400 focus:border-neutral-900 focus:ring-2 focus:ring-neutral-900/10",
           error ? "border-neutral-950" : "border-neutral-200",
           multiline ? "min-h-28 resize-none leading-6" : "h-12",
           className

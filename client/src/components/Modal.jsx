@@ -39,16 +39,16 @@ export default function Modal({
     <div className="fixed inset-0 z-50 flex items-center justify-center px-4 py-6">
       <button
         aria-label="Close modal"
-        className="absolute inset-0 cursor-default bg-black/50"
+        className="absolute inset-0 cursor-default bg-black/40"
         onClick={onClose}
       />
       <div
         className={cn(
-          "relative max-h-[92vh] w-full overflow-hidden rounded-xl border border-neutral-200 bg-white shadow-soft animate-fade-in",
+          "relative max-h-[92vh] w-full overflow-hidden rounded-2xl border border-neutral-200/80 bg-white shadow-soft animate-fade-in",
           widths[width]
         )}
       >
-        <div className="flex items-start justify-between gap-4 border-b border-neutral-200 px-6 py-5">
+        <div className="flex items-start justify-between gap-4 border-b border-neutral-200/80 px-6 py-5">
           <div className="min-w-0">
             <h2 className="text-lg font-semibold text-neutral-950">{title}</h2>
             {description ? (
