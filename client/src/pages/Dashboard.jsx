@@ -159,8 +159,10 @@ export default function Dashboard() {
 
   return (
     <div className="mx-auto max-w-7xl space-y-8 animate-fade-in">
-      <section className="overflow-hidden rounded-2xl border border-neutral-200/80 bg-white/90 p-6 sm:p-8">
-        <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+      <section className="relative overflow-hidden rounded-3xl border border-white/70 bg-white/70 p-6 shadow-[0_20px_50px_rgba(15,23,42,0.08)] backdrop-blur-xl sm:p-8">
+        <div className="pointer-events-none absolute -right-20 -top-24 h-64 w-64 rounded-full bg-sky-200/40 blur-3xl" />
+        <div className="pointer-events-none absolute -left-28 -bottom-28 h-72 w-72 rounded-full bg-neutral-200/70 blur-3xl" />
+        <div className="relative z-10 flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
           <div className="max-w-2xl">
             <p className="text-sm font-medium text-neutral-500">
               Delivery overview
@@ -241,7 +243,7 @@ export default function Dashboard() {
               Recent tasks
             </h2>
           </div>
-          <div className="rounded-2xl border border-neutral-200/80 bg-white">
+          <div className="rounded-2xl border border-white/70 bg-white/70 shadow-sm backdrop-blur-xl">
             {isLoading ? (
               <div className="space-y-3 p-4">
                 {Array.from({ length: 5 }).map((_, index) => (
@@ -249,7 +251,7 @@ export default function Dashboard() {
                 ))}
               </div>
             ) : recentTasks.length ? (
-              <div className="divide-y divide-neutral-200">
+              <div className="divide-y divide-white/60">
                 {recentTasks.map((task) => (
                   <div className="p-4" key={task._id}>
                     <div className="flex items-start justify-between gap-3">

@@ -87,7 +87,7 @@ export default function TaskFormModal({
               Status
             </span>
             <select
-              className="h-12 w-full rounded-lg border border-neutral-200 bg-white px-4 text-sm text-neutral-900 outline-none transition focus:border-neutral-900 focus:ring-2 focus:ring-neutral-900/10"
+              className="h-12 w-full rounded-xl border border-white/70 bg-white/80 px-4 text-sm text-neutral-900 shadow-sm outline-none transition focus:border-sky-400 focus:ring-2 focus:ring-sky-200/70"
               name="status"
               onChange={handleChange}
               value={values.status}
@@ -104,7 +104,7 @@ export default function TaskFormModal({
               Priority
             </span>
             <select
-              className="h-12 w-full rounded-lg border border-neutral-200 bg-white px-4 text-sm text-neutral-900 outline-none transition focus:border-neutral-900 focus:ring-2 focus:ring-neutral-900/10"
+              className="h-12 w-full rounded-xl border border-white/70 bg-white/80 px-4 text-sm text-neutral-900 shadow-sm outline-none transition focus:border-sky-400 focus:ring-2 focus:ring-sky-200/70"
               name="priority"
               onChange={handleChange}
               value={values.priority}

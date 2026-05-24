@@ -241,11 +241,13 @@ export default function ProjectDetail() {
 
   return (
     <div className="mx-auto max-w-7xl space-y-8 animate-fade-in">
-      <section className="rounded-2xl border border-neutral-200/80 bg-white/90 p-6 sm:p-8">
-        <div className="flex flex-col gap-5 lg:flex-row lg:items-start lg:justify-between">
+      <section className="relative overflow-hidden rounded-3xl border border-white/70 bg-white/70 p-6 shadow-[0_20px_50px_rgba(15,23,42,0.08)] backdrop-blur-xl sm:p-8">
+        <div className="pointer-events-none absolute -right-20 -top-24 h-64 w-64 rounded-full bg-sky-200/35 blur-3xl" />
+        <div className="pointer-events-none absolute -left-28 -bottom-28 h-72 w-72 rounded-full bg-neutral-200/70 blur-3xl" />
+        <div className="relative z-10 flex flex-col gap-5 lg:flex-row lg:items-start lg:justify-between">
           <div className="min-w-0">
             <Link
-              className="inline-flex items-center gap-2 rounded-lg px-2 py-1 text-sm font-medium text-neutral-600 transition hover:bg-neutral-100 hover:text-neutral-950"
+              className="inline-flex items-center gap-2 rounded-lg px-2 py-1 text-sm font-medium text-neutral-600 transition hover:bg-white/70 hover:text-neutral-950"
               to="/dashboard"
             >
               <ArrowLeft className="h-4 w-4" aria-hidden="true" />
@@ -306,10 +308,10 @@ export default function ProjectDetail() {
           <div className="kanban-scroll grid gap-4 overflow-x-auto pb-2 xl:grid-cols-3">
             {TASK_STATUSES.map((status) => (
               <div
-                className={`min-h-[26rem] min-w-[18rem] rounded-2xl border p-3 transition ${
+                className={`min-h-[26rem] min-w-[18rem] rounded-2xl border border-white/70 bg-white/60 p-3 shadow-[0_10px_30px_rgba(15,23,42,0.06)] backdrop-blur-xl transition ${
                   activeColumn === status
-                    ? "border-neutral-400 bg-white"
-                    : "border-neutral-200/80 bg-white/70"
+                    ? "ring-1 ring-sky-200/80 bg-white/80"
+                    : "hover:bg-white/75"
                 }`}
                 key={status}
                 onDragOver={(event) => {
@@ -330,7 +332,7 @@ export default function ProjectDetail() {
                 }}
                 onDrop={() => handleDrop(status)}
               >
-                <div className="mb-3 flex items-center justify-between gap-3 rounded-xl border border-neutral-200/80 bg-white px-4 py-3">
+                <div className="mb-3 flex items-center justify-between gap-3 rounded-xl border border-white/70 bg-white/80 px-4 py-3 shadow-[inset_0_1px_0_rgba(255,255,255,0.6)]">
                   <div className="min-w-0">
                     <h3 className="font-semibold text-neutral-950">{status}</h3>
                     <p className="mt-1 text-xs text-neutral-500">
@@ -354,7 +356,7 @@ export default function ProjectDetail() {
                       />
                     ))
                   ) : (
-                    <div className="rounded-xl border border-dashed border-neutral-300 bg-white p-4 text-sm leading-6 text-neutral-500">
+                    <div className="rounded-xl border border-dashed border-white/70 bg-white/70 p-4 text-sm leading-6 text-neutral-500">
                       Drop tasks here or create a new one.
                     </div>
                   )}

@@ -24,8 +24,8 @@ const NavItem = ({ item, onClick }) => {
         cn(
           "flex h-11 items-center gap-3 rounded-lg px-3 text-sm font-medium transition",
           isActive
-            ? "bg-neutral-100 text-neutral-950"
-            : "text-neutral-500 hover:bg-neutral-100 hover:text-neutral-950"
+            ? "bg-white/80 text-neutral-950 shadow-[0_8px_20px_rgba(15,23,42,0.08)]"
+            : "text-neutral-500 hover:bg-white/70 hover:text-neutral-950"
         )
       }
       onClick={onClick}
@@ -41,15 +41,15 @@ export default function Sidebar({ isMobileOpen, onClose }) {
   const { logout } = useAuth();
 
   const content = (
-    <div className="flex h-full flex-col border-r border-neutral-200/80 bg-white text-neutral-900">
-      <div className="flex h-16 items-center justify-between border-b border-neutral-200/80 px-6">
+    <div className="flex h-full flex-col border-r border-white/70 bg-gradient-to-b from-white/90 via-white/80 to-white/70 text-neutral-900 backdrop-blur-xl shadow-[0_12px_30px_rgba(15,23,42,0.08)]">
+      <div className="flex h-16 items-center justify-between border-b border-white/70 px-6">
         <div className="min-w-0">
           <p className="text-xl font-semibold">TaskFlow</p>
           <p className="mt-1 text-xs text-neutral-500">Project command center</p>
         </div>
         <Button
           aria-label="Close sidebar"
-          className="text-neutral-600 hover:bg-neutral-100 hover:text-neutral-900 lg:hidden"
+          className="text-neutral-600 hover:bg-white/70 hover:text-neutral-900 lg:hidden"
           icon={X}
           onClick={onClose}
           size="icon"
@@ -64,9 +64,9 @@ export default function Sidebar({ isMobileOpen, onClose }) {
       </nav>
 
       <div className="px-4 pb-4">
-        <div className="rounded-lg border border-neutral-200 bg-white p-4">
+        <div className="rounded-2xl border border-white/70 bg-white/70 p-4 shadow-sm">
           <div className="flex items-center gap-3">
-            <div className="flex h-10 w-10 items-center justify-center rounded-lg border border-neutral-200 bg-white text-neutral-950">
+            <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/70 bg-white/80 text-neutral-950 shadow-sm">
               <BarChart3 className="h-5 w-5" aria-hidden="true" />
             </div>
             <div className="min-w-0">

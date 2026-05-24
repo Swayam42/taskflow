@@ -10,7 +10,7 @@ export default function EmptyState({
   return (
     <Card className="flex min-h-72 items-center justify-center p-8 text-center">
       <div className="mx-auto max-w-md">
-        <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-lg border border-neutral-200 bg-white">
+        <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl border border-white/70 bg-white/80 shadow-sm">
           <Icon className="h-6 w-6 text-neutral-950" aria-hidden="true" />
         </div>
         <h3 className="mt-5 text-xl font-semibold text-neutral-950">{title}</h3>

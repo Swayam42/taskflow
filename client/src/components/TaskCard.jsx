@@ -13,7 +13,7 @@ export default function TaskCard({
   return (
     <Card
       as="article"
-      className="cursor-grab p-4 transition duration-150 hover:border-neutral-300 hover:bg-neutral-50 active:cursor-grabbing"
+      className="cursor-grab rounded-xl border border-white/70 bg-white/80 p-4 shadow-[0_6px_16px_rgba(15,23,42,0.08)] transition duration-150 hover:-translate-y-0.5 hover:bg-white hover:shadow-[0_10px_20px_rgba(15,23,42,0.12)] active:cursor-grabbing"
       draggable
       onDragStart={(event) => onDragStart?.(event, task)}
       onDragEnd={(event) => onDragEnd?.(event, task)}
@@ -52,7 +52,7 @@ export default function TaskCard({
       </div>
 
       <div className="mt-4 flex flex-wrap items-center justify-between gap-2">
-        <span className="rounded-full border border-neutral-200 bg-white px-3 py-1 text-xs font-medium text-neutral-700">
+        <span className="rounded-full border border-white/70 bg-white/80 px-3 py-1 text-xs font-medium text-neutral-700 shadow-sm">
           {task.priority}
         </span>
         <span className="text-xs text-neutral-500">

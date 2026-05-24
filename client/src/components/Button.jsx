@@ -3,15 +3,15 @@ import { cn } from "../utils/cn.js";
 
 const variants = {
   primary:
-    "border-neutral-950 bg-neutral-950 text-white hover:bg-neutral-800 hover:border-neutral-800",
+    "border-neutral-900/80 bg-gradient-to-b from-neutral-950 to-neutral-800 text-white shadow-[0_8px_20px_rgba(15,23,42,0.2)] hover:from-neutral-800 hover:to-neutral-900",
   secondary:
-    "border-neutral-200 bg-white text-neutral-900 hover:bg-neutral-100",
+    "border-white/70 bg-white/70 text-neutral-900 shadow-[inset_0_1px_0_rgba(255,255,255,0.6)] backdrop-blur hover:bg-white",
   ghost:
-    "border-transparent bg-transparent text-neutral-600 hover:bg-neutral-100 hover:text-neutral-900",
+    "border-transparent bg-transparent text-neutral-600 hover:bg-white/60 hover:text-neutral-900",
   subtle:
-    "border-neutral-200 bg-neutral-100 text-neutral-900 hover:bg-neutral-200",
+    "border-white/60 bg-white/60 text-neutral-900 hover:bg-white/80",
   danger:
-    "border-rose-500 bg-rose-500 text-white hover:bg-rose-600 hover:border-rose-600"
+    "border-rose-500 bg-rose-500 text-white shadow-[0_8px_20px_rgba(244,63,94,0.25)] hover:bg-rose-600 hover:border-rose-600"
 };
 
 const sizes = {
@@ -35,7 +35,7 @@ export default function Button({
   return (
     <button
       className={cn(
-        "inline-flex shrink-0 items-center justify-center gap-2 rounded-lg border font-medium transition duration-150 focus:outline-none focus:ring-2 focus:ring-neutral-900/20 focus:ring-offset-2 disabled:opacity-60",
+        "inline-flex shrink-0 items-center justify-center gap-2 rounded-xl border font-medium transition duration-150 focus:outline-none focus:ring-2 focus:ring-sky-200/80 focus:ring-offset-2 disabled:opacity-60",
         variants[variant],
         sizes[size],
         className

@@ -12,7 +12,7 @@ export default function ProjectCard({ onDelete, onEdit, project }) {
     : 0;
 
   return (
-    <Card className="group flex h-full flex-col p-5 transition duration-150 hover:border-neutral-300 hover:bg-neutral-50">
+    <Card className="group flex h-full flex-col p-5 transition duration-150 hover:-translate-y-0.5 hover:bg-white hover:shadow-[0_16px_30px_rgba(15,23,42,0.12)]">
       <div className="flex items-start justify-between gap-4">
         <div className="min-w-0">
           <p className="text-xs font-medium uppercase text-neutral-500">
@@ -44,14 +44,14 @@ export default function ProjectCard({ onDelete, onEdit, project }) {
         {project.description || "No description yet."}
       </p>
 
-      <div className="mt-5 rounded-lg border border-neutral-200 bg-white p-4">
+      <div className="mt-5 rounded-xl border border-white/70 bg-white/70 p-4 shadow-sm">
         <div className="flex items-center justify-between text-sm">
           <span className="font-medium text-neutral-600">Completion</span>
           <span className="font-semibold text-neutral-950">{completion}%</span>
         </div>
-        <div className="mt-3 h-2 overflow-hidden rounded-full bg-neutral-200">
+        <div className="mt-3 h-2 overflow-hidden rounded-full bg-neutral-200/80">
           <div
-            className="h-full rounded-full bg-neutral-950 transition-all duration-300"
+            className="h-full rounded-full bg-gradient-to-r from-neutral-950 to-neutral-700 transition-all duration-300"
             style={{ width: `${completion}%` }}
           />
         </div>
@@ -66,7 +66,7 @@ export default function ProjectCard({ onDelete, onEdit, project }) {
           Updated {formatDate(project.updatedAt)}
         </span>
         <Link
-          className="inline-flex items-center gap-2 rounded-lg px-2 py-1 text-sm font-medium text-neutral-950 transition hover:bg-neutral-100"
+          className="inline-flex items-center gap-2 rounded-lg px-2 py-1 text-sm font-medium text-neutral-950 transition hover:bg-white/70"
           to={`/projects/${project._id}`}
         >
           Open

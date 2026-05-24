@@ -7,7 +7,7 @@ export default function Navbar({ onMenuClick, title }) {
   const { user } = useAuth();
 
   return (
-    <header className="sticky top-0 z-20 border-b border-neutral-200/80 bg-white/80 backdrop-blur">
+    <header className="sticky top-0 z-20 border-b border-white/70 bg-white/70 backdrop-blur-xl shadow-[0_8px_24px_rgba(15,23,42,0.06)]">
       <div className="flex h-16 items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
         <div className="flex min-w-0 items-center gap-3">
           <Button
@@ -27,11 +27,11 @@ export default function Navbar({ onMenuClick, title }) {
         </div>
 
         <div className="flex shrink-0 items-center gap-3">
-          <div className="hidden h-10 w-72 items-center gap-3 rounded-lg border border-neutral-200/80 bg-white px-4 text-sm text-neutral-500 md:flex">
+          <div className="hidden h-10 w-72 items-center gap-3 rounded-xl border border-white/70 bg-white/70 px-4 text-sm text-neutral-500 shadow-sm md:flex">
             <Search className="h-4 w-4" aria-hidden="true" />
             <span>Search workspace</span>
           </div>
-          <div className="flex h-10 items-center gap-3 rounded-lg border border-neutral-200/80 bg-white px-2.5 py-2">
+          <div className="flex h-10 items-center gap-3 rounded-xl border border-white/70 bg-white/70 px-2.5 py-2 shadow-sm">
             <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-neutral-950 text-xs font-semibold text-white">
               {initials(user?.name)}
             </div>
